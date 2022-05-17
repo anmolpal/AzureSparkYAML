@@ -20,6 +20,10 @@ spec:
           ports:
             - containerPort: 7077
             - containerPort: 8080
-          resources:
-            requests:
-              cpu: 100m
+          volumeMounts:
+            - name: spark-persistent-storage
+              mountPath: /home
+      volumes:
+      - name: spark-persistent-storage
+        persistentVolumeClaim:
+          claimName: spark-managed-disk-pvc
