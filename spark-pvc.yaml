@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: azure-managed-disk-pvc
+  name: spark-managed-disk-pvc
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   storageClassName: managed-premium-retain-sc #if pod gets deleted disk will be available
   resources:
     requests:
