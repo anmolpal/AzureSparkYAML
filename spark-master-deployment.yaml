@@ -21,9 +21,11 @@ spec:
             - containerPort: 7077
             - containerPort: 8080
           volumeMounts:
-            - name: spark-persistent-storage
-              mountPath: /home
+            - name: azurefileshare
+              mountPath: /spark
       volumes:
-      - name: spark-persistent-storage
-        persistentVolumeClaim:
-          claimName: spark-managed-disk-pvc
+      - name: azurefileshare
+        azureFile:
+          secretName: storage-secret
+          shareName: spark
+          readOnly: false
